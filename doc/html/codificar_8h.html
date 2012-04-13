@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>Ocultar/Revelar Mensajes: Referencia del Archivo include/codificar.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Generado por Doxygen 1.7.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul class="tablist">
+      <li><a href="main.html"><span>P�gina&nbsp;principal</span></a></li>
+      <li class="current"><a href="files.html"><span>Archivos</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+      <li><a href="globals.html"><span>Miembros&nbsp;de&nbsp;los&nbsp;ficheros</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funciones</a>  </div>
+  <div class="headertitle">
+<h1>Referencia del Archivo include/codificar.h</h1>  </div>
+</div>
+<div class="contents">
+
+<p>Fichero cabecera que oculta/revela mensajes.  
+<a href="#_details">M�s...</a></p>
+
+<p><a href="codificar_8h_source.html">Ir al c�digo fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Funciones</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="codificar_8h.html#a80bd1eea74de8749ac119f86a2630dc0">ocultar</a> (unsigned char[], int, char[], int)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Oculta un mensaje en los bytes de la imagen dada.  <a href="#a80bd1eea74de8749ac119f86a2630dc0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="codificar_8h.html#aa9897d052f1eba982d8d6b96dc1b3972">revelar</a> (unsigned char[], int, char[], int)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Revela un mensaje en los bytes de la imagen dada.  <a href="#aa9897d052f1eba982d8d6b96dc1b3972"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Descripci�n detallada</h2>
+<p>Fichero cabecera que oculta/revela mensajes. </p>
+<dl class="author"><dt><b>Autor:</b></dt><dd>Alejandro Alcalde Barros </dd></dl>
+<dl class="date"><dt><b>Fecha:</b></dt><dd>16/03/2012 </dd></dl>
+
+<p>Definici�n en el archivo <a class="el" href="codificar_8h_source.html">codificar.h</a>.</p>
+<hr/><h2>Documentaci�n de las funciones</h2>
+<a class="anchor" id="a80bd1eea74de8749ac119f86a2630dc0"></a><!-- doxytag: member="codificar.h::ocultar" ref="a80bd1eea74de8749ac119f86a2630dc0" args="(unsigned char[], int, char[], int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ocultar </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&nbsp;</td>
+          <td class="paramname"> <em>char</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname">[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Oculta un mensaje en los bytes de la imagen dada. </p>
+<dl><dt><b>Par�metros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>buffer</em>&nbsp;</td><td>Datos de la imagen </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>filas</em>&nbsp;</td><td>Filas de la imagen. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>columnas</em>&nbsp;</td><td>Columnas de la imagen. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mensaje</em>&nbsp;</td><td>Mensaje a ocultar en la imagen </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tamaño</em>&nbsp;</td><td>Tamaño del mensaje a cifrar. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>0 si todo fue bien </dd>
+<dd>
+-1 si la imagen es demasiado pequeña para el mensaje a cifrar </dd></dl>
+<dl class="pre"><dt><b>Precondici�n:</b></dt><dd>buffer debe ser una zona de memoria suficientemente grande como para almacenar <em>filas</em> x <em>columnas</em> bytes de datos de la imagen. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa9897d052f1eba982d8d6b96dc1b3972"></a><!-- doxytag: member="codificar.h::revelar" ref="aa9897d052f1eba982d8d6b96dc1b3972" args="(unsigned char[], int, char[], int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int revelar </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&nbsp;</td>
+          <td class="paramname"> <em>char</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname">[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Revela un mensaje en los bytes de la imagen dada. </p>
+<dl><dt><b>Par�metros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>buffer</em>&nbsp;</td><td>Datos de la imagen </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>filas</em>&nbsp;</td><td>Filas de la imagen. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>columnas</em>&nbsp;</td><td>Columnas de la imagen. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mensaje</em>&nbsp;</td><td>Parámetro de salida donde se almacenará el mensaje extraido. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tamaño</em>&nbsp;</td><td>Tamaño máximo de la cadena de caracteres. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Devuelve:</b></dt><dd>si ha tenido éxito en la lectura </dd></dl>
+<dl class="pre"><dt><b>Precondici�n:</b></dt><dd>buffer debe ser una zona de memoria suficientemente grande como para almacenar <em>filas</em> x <em>columnas</em> bytes de datos de la imagen. </dd></dl>
+
+</div>
+</div>
+</div>
+<hr>
+<small>ETS Ingeniería Informática y Telecomunicaciones. Universidad de Granada.
+</small>
