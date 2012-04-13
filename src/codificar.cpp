@@ -11,7 +11,8 @@ int ocultar(unsigned char buffer[],int tamImage, char sms[], int tamSms){
 	unsigned short int indiceLetra		  = 0;
 	char letra							  = sms[indiceLetra];
 	short int bitsLetraRestantes 		  = 7;
-	unsigned char mask					  = 0x80; //Empezamos por el bit más significativo (10000000)
+	//Empezamos por el bit más significativo (10000000)
+	unsigned char mask[]				  = {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 
 	//Imagen demasiado pequeña para la cadena suministrada
 	if (tamImage < tamSms)
@@ -23,12 +24,10 @@ int ocultar(unsigned char buffer[],int tamImage, char sms[], int tamSms){
 
 		if (bitsLetraRestantes < 0){
 			bitsLetraRestantes = 7;
-			mask			   = 0x80;
 			letra 			   = sms[++indiceLetra];
 		}
 		// Sacamos el bit de la letra en su posición y lo desplazamos a la pos menos significativa
-		char c = (letra & mask) >> bitsLetraRestantes--;
-		mask >>= 1;
+		char c = (letra & mask[7-bitsLetraRestantes]) >> bitsLetraRestantes--;
 		buffer[i] ^= c; //Almacenamos en el ultimo bit del pixel el valor del caracter
 		//buffer[i] ^= 0xff; //Negativo e invertido
 		//buffer[i] = ~buffer[i];

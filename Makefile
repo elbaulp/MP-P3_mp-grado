@@ -3,11 +3,11 @@ SRC = src
 INC = include
 OBJ = obj
 CXX = g++
-CPPFLAGS = -Wall -g -v  -I$(INC) -c
+CPPFLAGS = -Wall -g -v -pg -I$(INC) -c
 
 # ************ Generación de ocular   ************
 ocultar: $(OBJ)/ocultar.o $(OBJ)/imagenES.o $(OBJ)/codificar.o
-	$(CXX) -Wall -g -v  $^ -o $@
+	$(CXX) -Wall -g -v -pg $^ -o $@
 	
 $(OBJ)/ocultar.o : $(SRC)/ocultar.cpp
 	$(CXX) $(CPPFLAGS) $(SRC)/ocultar.cpp -o $(OBJ)/ocultar.o
