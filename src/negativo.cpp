@@ -16,13 +16,10 @@ int main(){
 	int filas;
 	int columnas;
 	//TODO -> Comprobar el tipo devuelto
-	TipoImagen tipo = LeerTipoImagen("./imagenes/hombro.pgm", filas, columnas);
+	TipoImagen tipo = LeerTipoImagen("./imagenes/lenna.pgm", filas, columnas);
 	Imagen img(filas,columnas);
-	char file[] = "./imagenes/hombro.pgm";
 
-	if(img.leer_imagen(file)){
-		cout << "s";
-	}
-
-	//cout << img.get_filas() << " " << img.get_columnas();
+	cout << img.leer_imagen("./imagenes/lenna.pgm") << endl;
+	cout << img.get_filas() << " " << img.get_columnas();
+	img.destruir();
 }
