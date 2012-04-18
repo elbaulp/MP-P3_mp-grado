@@ -18,5 +18,11 @@ int main(){
 	//TODO -> Comprobar el tipo devuelto
 	TipoImagen tipo = LeerTipoImagen("./imagenes/hombro.pgm", filas, columnas);
 	Imagen img(filas,columnas);
-	cout << img.get_filas() << " " << img.get_columnas();
+	char file[] = "./imagenes/hombro.pgm";
+
+	if(img.leer_imagen(file)){
+		cout << "s";
+	}
+
+	//cout << img.get_filas() << " " << img.get_columnas();
 }

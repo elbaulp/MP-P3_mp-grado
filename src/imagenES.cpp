@@ -110,6 +110,7 @@ bool LeerImagenPPM (const char nombre[], int& filas, int& columnas, unsigned cha
 
 bool LeerImagenPGM (const char nombre[], int& filas, int& columnas, unsigned char buffer[])
 {
+	//
   bool exito= false;
   filas=0;
   columnas=0;

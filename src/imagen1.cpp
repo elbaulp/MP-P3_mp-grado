@@ -5,6 +5,7 @@
  *      Author: hkr
  */
 #include "../include/imagen1.h"
+#include "../include/imagenES.h"
 
 Imagen::Imagen(int f, int c){
 	buffer 	= new unsigned char[f*c];
@@ -30,8 +31,9 @@ void Imagen::destruir(){
 
 //-------------------------
 
-bool Imagen::leer_imagen(const char buffer[]){
-
+bool Imagen::leer_imagen(const char file[]){
+	bool s = LeerImagenPGM("./imagenes/hombro.pgm", this->filas, this->columnas, this->buffer);
+	return s;
 }
 
 //-------------------------
