@@ -21,5 +21,6 @@ int main(){
 
 	cout << img.leer_imagen("./imagenes/lenna.pgm") << endl;
 	cout << img.get_filas() << " " << img.get_columnas();
+
 	img.destruir();
 }

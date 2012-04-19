@@ -11,14 +11,12 @@
 class Imagen{
 
 private:
-	//impl
+	int filas;
+	int columnas;
 
 public:
-	Imagen(int f, int c){
-		buffer = new unsigned char[f*c];		//Reserva recursos en memoria dinámica
-	}
-//	inline void crear(int f, int c) {			//Reserva recursos en memoria dinámica
-//		buffer = new unsigned char[f*c];}
+	Imagen(int f, int c);						//Reserva recursos en memoria dinámica
+
 	inline int get_filas() const{				//Devuelve el número de filas de m
 		return filas;
 	}
