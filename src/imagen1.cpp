@@ -6,39 +6,65 @@
  */
 #include "../include/imagen1.h"
 #include "../include/imagenES.h"
+#include <iostream>
+#include <assert.h>
 
-Imagen::Imagen(int f, int c){
-	filas 	= f;
-	columnas= c;
-	buffer 	= new unsigned char[filas*columnas];
+using namespace std;
+
+void Imagen::crear(int f, int c) {
+	//assert(f > 0 && c > 0);
+
+	if (f > 0 && c > 0) {
+		filas = f;
+		columnas = c;
+		buffer = new unsigned char[filas * columnas];
+	} else {
+		filas = 0;
+		columnas = 0;
+		buffer = 0;
+	}
 }
 
-void Imagen::set_buffer(int i, int j, unsigned char v){
-
+void Imagen::set_buffer(int i, int j, unsigned char v) {
+	buffer[i*columnas+j] = v;
 }
 
 //-------------------------
 
-unsigned char Imagen::get_buffer(int i, int j) const{
-	return 'c';
+unsigned char Imagen::get_buffer(int i, int j) const {
+	return buffer[i*columnas+j];
 }
 
 //-------------------------
 
-void Imagen::destruir(){
+void Imagen::destruir() {
 	filas = 0;
 	columnas = 0;
-	delete buffer;
+	delete[] buffer;
 }
 
 //-------------------------
 
-bool Imagen::leer_imagen(const char file[]){
-	return LeerImagenPGM(file, filas, columnas, buffer);
+bool Imagen::leer_imagen(const char file[]) {
+	int f;
+	int c;
+	TipoImagen tipo = LeerTipoImagen(file, f, c);
+
+	if (tipo == IMG_PGM) {
+		destruir();
+		crear(f, c);
+		//cout << filas << columnas << endl;
+		if (LeerImagenPGM(file, filas, columnas, buffer))
+			return true;
+		return false;
+	}
+	return false;
 }
 
 //-------------------------
 
-bool Imagen::escribir_imagen(const char buffer[]) const{
-	return true;
+bool Imagen::escribir_imagen(const char file[]) const {
+	if (EscribirImagenPGM(file, buffer, filas, columnas))
+		return true;
+	return false;
 }

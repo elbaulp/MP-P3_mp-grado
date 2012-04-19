@@ -16,7 +16,7 @@ private:
 	unsigned char* buffer;
 
 public:
-	Imagen(int, int);							//Reserva recursos en memoria dinámica
+	void crear(int, int);						//Reserva recursos en memoria dinámica
 	inline int get_filas() const{				//Devuelve el número de filas de m
 		return filas;
 	}

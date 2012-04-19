@@ -7,20 +7,34 @@
   */
 #include "../include/imagenES.h"
 #include "../include/imagen.h"
+#include "../include/transformar.h"
 
 #include <iostream>
 
 using namespace std;
 
-int main(){
-	int filas;
-	int columnas;
-	//TODO -> Comprobar el tipo devuelto
-	TipoImagen tipo = LeerTipoImagen("./imagenes/lenna.pgm", filas, columnas);
-	Imagen img(filas,columnas);
+int main (int argc,char *argv[])
+{
+   Imagen img;
+   if(argc < 3){
+      cout <<"Uso: "<<"negativo imagenEntrada.pgm imagenSalida.pgm" << endl;
+      return -1;
+   }
+   else{
+      img.crear(0,0);
+      if(!img.leer_imagen(argv[1])){ //PAsamos el archivo a leer
+         cout << "No se puede leer la imagen " << endl;
+         return -2;
+      }
+      else
+         negativo(img); //En transformar
+         if(!img.escribir_imagen(argv[2])){
+            cout << "No se puede escribir la imagen " << endl;
+            return -3;
+         }
 
-	cout << img.leer_imagen("./imagenes/lenna.pgm") << endl;
-	cout << img.get_filas() << " " << img.get_columnas();
-
-	img.destruir();
+      img.destruir();
+   }
+   return 0;
 }
+

@@ -7,8 +7,10 @@ CPPFLAGS = -Wall -g -v  -I$(INC) -c
 
 all: negativo
 
-negativo: $(OBJ)/negativo.o $(OBJ)/imagenES.o $(OBJ)/imagen.o
+negativo: $(OBJ)/negativo.o $(OBJ)/imagenES.o $(OBJ)/imagen.o $(OBJ)/transformar.o
 	$(CXX) -Wall -g -v  $^ -o $@
+$(OBJ)/transformar.o: $(SRC)/transformar.cpp $(INC)/transformar.h
+	$(CXX) $(CPPFLAGS) $(SRC)/transformar.cpp -o $(OBJ)/transformar.o
 $(OBJ)/imagenES.o : $(SRC)/imagenES.cpp $(INC)/imagenES.h
 	$(CXX) $(CPPFLAGS) $(SRC)/imagenES.cpp -o $(OBJ)/imagenES.o
 $(OBJ)/negativo.o : $(SRC)/negativo.cpp

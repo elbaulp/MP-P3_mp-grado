@@ -8,7 +8,9 @@
 #ifndef TRANSFORMAR_H_
 #define TRANSFORMAR_H_
 
+#include "../include/imagen.h"
 
-
+void negativo(Imagen&);
+void desplazar(int);
 
 #endif /* TRANSFORMAR_H_ */
