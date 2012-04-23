@@ -11,6 +11,6 @@
 #include "../include/imagen.h"
 
 void negativo(Imagen&);
-void desplazar(int);
+void desplazar(Imagen&, int);
 
 #endif /* TRANSFORMAR_H_ */

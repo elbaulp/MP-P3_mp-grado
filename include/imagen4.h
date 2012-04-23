@@ -11,11 +11,17 @@
 class Imagen{
 
 private:
-	int filas;
+	struct Celdas{
+		Celdas* nextRow;
+		unsigned char* fila;
+	};
+
 	int columnas;
+	Celdas* pt;
+
 
 public:
-	Imagen(int f, int c);						//Reserva recursos en memoria dinámica
+	void crear(int, int);					//Reserva recursos en memoria dinámica
 
 	inline int get_filas() const{				//Devuelve el número de filas de m
 		return filas;

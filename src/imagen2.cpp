@@ -8,6 +8,8 @@
 #include "../include/imagen2.h"
 #include "../include/imagenES.h"
 
+#include <string.h>
+
 void Imagen::crear(int f, int c) {
 	if (f < 0 && c < 0) {
 		filas 	 = 0;
@@ -63,12 +65,12 @@ unsigned char Imagen::get_buffer(int i, int j) const {
 //-------------------------
 
 void Imagen::destruir() {
-	filas = 0;
-	columnas = 0;
-
 	for (int i = 0; i < filas; i++)
 		delete[] buffer[i];
 	delete[] buffer;
+
+	filas = 0;
+	columnas = 0;
 }
 
 //-------------------------

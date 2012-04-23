@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 
 	Imagen img;
 	if (argc < 3) {
-		cout << "Uso: " << "negativo imagenEntrada.pgm imagenSalida.pgm\n";
+		cerr << "Uso: " << "negativo imagenEntrada.pgm imagenSalida.pgm\n";
 		return -1;
 	}
 	img.crear(0, 0);
