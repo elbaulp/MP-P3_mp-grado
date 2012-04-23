@@ -8,18 +8,82 @@
 #include "../include/imagen2.h"
 #include "../include/imagenES.h"
 
-Imagen::Imagen(int f, int c){
-	filas 	= f;
-	columnas= c;
-	buffer 	= new unsigned char* [filas];
+void Imagen::crear(int f, int c) {
+	if (f < 0 && c < 0) {
+		filas 	 = 0;
+		columnas = 0;
+		buffer 	 = 0;
+	}else{
+		filas 	 = f;
+		columnas = c;
+		buffer 	 = new unsigned char*[filas];
 
-	for(int i=0; i < columnas; i++)
-		buffer[i] = new unsigned char[columnas];
+		for (int i = 0; i < columnas; i++)
+			buffer[i] = new unsigned char[columnas];
+	}
 }
- bool Imagen::leer_imagen(const char file[]){
-	 //Antes de esto leerTIpoImagen para tenr las filas y columnas de la imagen
-	 //unsigned char* buffer[fil*col]; //Para ponerlo de la primera forma para que al leer la imagen pasemos el parametro correctamente
-	 //Le pasalo a leerImganPGM con este biffer
-	 //Despues pasamos el buffer a nuestra forma de buffer de doble puntero con un doble for
-	 //delete[] el buffer aux
- }
+
+//-------------------------
+
+bool Imagen::leer_imagen(const char file[]) {
+	int f;
+	int c;
+	bool resul = false;
+	unsigned char* auxBuffer;
+
+	TipoImagen tipo = LeerTipoImagen(file, f, c);
+	auxBuffer = new unsigned char[f * c];
+
+	if (tipo == IMG_PGM) {
+		destruir();
+		crear(f, c);
+		if (LeerImagenPGM(file, filas, columnas, auxBuffer)) {
+			//Pasamos el buffer la estructura de imagen2
+			for (int i = 0; i < filas; i++)
+				for (int j = 0; j < columnas; j++)
+					buffer[i][j] = auxBuffer[i * columnas + j];
+			delete[] auxBuffer;
+			resul = true;
+		}
+
+	}
+	return resul;
+}
+
+void Imagen::set_buffer(int i, int j, unsigned char v) {
+	buffer[i][j] = v;
+}
+
+//-------------------------
+
+unsigned char Imagen::get_buffer(int i, int j) const {
+	return buffer[i][j];
+}
+
+//-------------------------
+
+void Imagen::destruir() {
+	filas = 0;
+	columnas = 0;
+
+	for (int i = 0; i < filas; i++)
+		delete[] buffer[i];
+	delete[] buffer;
+}
+
+//-------------------------
+
+bool Imagen::escribir_imagen(const char file[]) const {
+	//Pasamos de la estructura de buffer2 a la simple
+	unsigned char* auxBuffer = new unsigned char[filas * columnas];
+
+	for (int i = 0; i < filas; i++)
+		for (int j = 0; j < columnas; j++)
+			auxBuffer[i*columnas + j] = buffer[i][j]; //2d Array to 1D
+
+	if (EscribirImagenPGM(file, auxBuffer, filas, columnas)){
+		delete[] auxBuffer;
+		return true;
+	}
+	return false;
+}

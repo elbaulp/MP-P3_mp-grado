@@ -9,7 +9,7 @@
 #ifndef IMAGEN_H_
 #define IMAGEN_H_
 
-#define CUAL_COMPILO 1
+#define CUAL_COMPILO 3
 
 #if CUAL_COMPILO==1
   #include "imagen1.h"

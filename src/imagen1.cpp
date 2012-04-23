@@ -6,22 +6,22 @@
  */
 #include "../include/imagen1.h"
 #include "../include/imagenES.h"
-#include <iostream>
-#include <assert.h>
 
-using namespace std;
+#include <assert.h>
+#include <string.h>
+
 
 void Imagen::crear(int f, int c) {
 	//assert(f > 0 && c > 0);
 
 	if (f > 0 && c > 0) {
-		filas = f;
+		filas 	 = f;
 		columnas = c;
-		buffer = new unsigned char[filas * columnas];
+		buffer   = new unsigned char[filas * columnas];
 	} else {
-		filas = 0;
+		filas 	 = 0;
 		columnas = 0;
-		buffer = 0;
+		buffer	 = 0;
 	}
 }
 
@@ -38,8 +38,8 @@ unsigned char Imagen::get_buffer(int i, int j) const {
 //-------------------------
 
 void Imagen::destruir() {
-	filas = 0;
-	columnas = 0;
+	filas 		= 0;
+	columnas	= 0;
 	delete[] buffer;
 }
 
@@ -48,17 +48,16 @@ void Imagen::destruir() {
 bool Imagen::leer_imagen(const char file[]) {
 	int f;
 	int c;
+	bool resul = false;
 	TipoImagen tipo = LeerTipoImagen(file, f, c);
 
 	if (tipo == IMG_PGM) {
 		destruir();
 		crear(f, c);
-		//cout << filas << columnas << endl;
 		if (LeerImagenPGM(file, filas, columnas, buffer))
-			return true;
-		return false;
+			resul = true;
 	}
-	return false;
+	return resul;
 }
 
 //-------------------------

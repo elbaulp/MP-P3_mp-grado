@@ -5,10 +5,10 @@
  *      Author: hkr
  */
 
-#include "../include/imagen2.h"
+#include "../include/imagen3.h"
 #include "../include/imagenES.h"
 
-Imagen::Imagen(int f, int c){
+void Imagen::crear(int f, int c){
 	filas 	= f;
 	columnas= c;
 	buffer 	= new unsigned char* [filas];
@@ -16,6 +16,6 @@ Imagen::Imagen(int f, int c){
 	buffer[0] = new unsigned char[filas * columnas];
 
 	for(int i = 1; i < filas ; i++){
-		buffer[i] = &buffer[columnas*i];
+		buffer[i] = buffer[columnas*i]; //m[i-1]+ncol
 	}
 }

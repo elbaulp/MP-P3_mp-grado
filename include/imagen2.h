@@ -16,6 +16,7 @@ private:
 	unsigned char** buffer;
 
 public:
+	void crear(int,int);
 	inline int get_filas() const{				//Devuelve el número de filas de m
 		return filas;
 	}
