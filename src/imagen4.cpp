@@ -7,7 +7,7 @@ using namespace std;
 
 void Imagen::crear(int f, int c) {
 
-		columnas = c;
+		this->columnas = c;
 
 		Celdas primero;
 
@@ -22,12 +22,12 @@ void Imagen::crear(int f, int c) {
 			ptCelda->nextRow = aux;
 			ptCelda = aux;
 		}
-		ptCelda->nextRow = 0; //Ultimo elemento de la estructura //TODO, borrarlo
+		delete ptCelda; //Ultimo elemento de la estructura //TODO, borrarlo
 }
 
 //-------------------------
 
-int Imagen::contar_filas(){
+int Imagen::get_filas(){
 	int filas = 0;
 	Celdas* aux = pt;
 
@@ -53,7 +53,7 @@ bool Imagen::leer_imagen(const char file[]) {
 	if (tipo == IMG_PGM) {
 		auxBuffer = new unsigned char[f * c];
 		if (LeerImagenPGM(file, f, c, auxBuffer)) {
-			//destruir();
+			destruir();
 			crear(f, c);
 			//Cambio de estructura
 			Celdas* aux = pt;
@@ -65,29 +65,58 @@ bool Imagen::leer_imagen(const char file[]) {
 			aux = 0;
 			resul = true;
 		}
-		delete[] auxBuffer;
+		auxBuffer = 0;
 
 	}
 	return resul;
 }
 
 void Imagen::set_buffer(int i, int j, unsigned char v) {
-;
+	Celdas* aux = pt;
+
+	while (i--)
+		aux = aux->nextRow;
+
+	aux->fila[j] = v;
+	aux = 0;
 }
 
 //-------------------------
 
 unsigned char Imagen::get_buffer(int i, int j) const {
+	Celdas* aux = pt;
+
+	while (i++)
+		aux = aux->nextRow;
+	return aux->fila[j];
 }
 
 //-------------------------
 
 void Imagen::destruir() {
-
+//	Celdas* aux = pt;
+//	while(aux){
+//		delete[] aux->fila;
+//		Celdas* aux2 = aux->nextRow;
+//		delete aux->nextRow;
+//		aux = aux2;
+//	}
 }
 
 //-------------------------
 
-bool Imagen::escribir_imagen(const char file[]) const {
+bool Imagen::escribir_imagen(const char file[]){
+	//Pasamos de la estructura de buffer2 a la simple
+	int filas = get_filas();
+	unsigned char* auxBuffer = new unsigned char[filas * columnas];
 
+	for (int i = 0; i < filas; i++)
+		for (int j = 0; j < columnas; j++)
+			auxBuffer[i*columnas + j] = get_buffer(i,j); //2d Array to 1D
+
+	if (EscribirImagenPGM(file, auxBuffer, filas, columnas))
+		return true;
+	delete[] auxBuffer;
+
+	return false;
 }
