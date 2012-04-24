@@ -19,13 +19,10 @@ private:
 	int columnas;
 	Celdas* pt;
 
+	int contar_filas();
 
 public:
 	void crear(int, int);					//Reserva recursos en memoria dinámica
-
-	inline int get_filas() const{				//Devuelve el número de filas de m
-		return filas;
-	}
 	inline int get_columnas() const{			//Devuelve el número de columnas de m
 		return columnas;
 	}
