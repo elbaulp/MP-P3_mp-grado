@@ -5,6 +5,7 @@
  *      Author: hkr
  */
 #include "../include/transformar.h"
+#include "../include/imagen.h"
 
 void negativo(Imagen& img){
 	int filas 		= img.get_filas();

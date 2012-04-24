@@ -22,12 +22,12 @@ void Imagen::crear(int f, int c) {
 			ptCelda->nextRow = aux;
 			ptCelda = aux;
 		}
-		ptCelda->nextRow = 0; //Ultimo elemento de la estructura //TODO, borrarlo
+		delete ptCelda; //Ultimo elemento de la estructura //TODO, borrarlo
 }
 
 //-------------------------
 
-int Imagen::contar_filas(){
+int Imagen::get_filas(){
 	int filas = 0;
 	Celdas* aux = pt;
 
@@ -35,7 +35,7 @@ int Imagen::contar_filas(){
 		aux = aux->nextRow;
 		filas++;
 	}
-	aux = 0;
+	delete aux;
 
 	return filas;
 }
@@ -72,12 +72,23 @@ bool Imagen::leer_imagen(const char file[]) {
 }
 
 void Imagen::set_buffer(int i, int j, unsigned char v) {
-;
+	Celdas* aux = pt;
+
+	while (i--)
+		aux = aux->nextRow;
+	aux->fila[j] = v;
+	aux = 0;
 }
 
 //-------------------------
 
 unsigned char Imagen::get_buffer(int i, int j) const {
+	Celdas* aux = pt;
+
+	while (i--)
+		aux = aux->nextRow;
+	return aux->fila[j];
+	aux = 0;
 }
 
 //-------------------------

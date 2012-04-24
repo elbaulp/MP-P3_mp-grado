@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
 		cerr << "Uso: " << "negativo imagenEntrada.pgm imagenSalida.pgm\n";
 		return -1;
 	}
-	img.crear(3, 3); //todo, 0,0 y combprobar
+	img.crear(0, 0); //todo, 0,0 y combprobar
 	if (!img.leer_imagen(argv[1])) { //PAsamos el archivo a leer
 		cerr << "No se puede leer la imagen " << endl;
 		return -2;
