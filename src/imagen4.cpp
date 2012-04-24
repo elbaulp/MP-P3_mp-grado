@@ -52,17 +52,17 @@ bool Imagen::leer_imagen(const char file[]) {
 
 	if (tipo == IMG_PGM) {
 		auxBuffer = new unsigned char[f * c];
-		destruir();
-		crear(f, c);
-		int filas = contar_filas();
 		if (LeerImagenPGM(file, f, c, auxBuffer)) {
+			//destruir();
+			crear(f, c);
 			//Cambio de estructura
 			Celdas* aux = pt;
-			for (int i = 0; i < filas; i++){
+			for (int i = 0; i < f; i++){
 				for (int j = 0; j < columnas; j++)
 					aux->fila[j] = auxBuffer[i * columnas + j];
 				aux = aux->nextRow;
 			}
+			aux = 0;
 			resul = true;
 		}
 		delete[] auxBuffer;
