@@ -7,22 +7,26 @@ using namespace std;
 
 void Imagen::crear(int f, int c) {
 
-	this->columnas = c;
+	if (!f && !c) {
+		columnas = 0;
+		pt = 0;
+	} else {
+		this->columnas = c;
 
-	Celdas primero;
+		this->pt = new Celdas;
+		pt->nextRow = 0;
+		pt->fila = new unsigned char[columnas];
+		Celdas* ptCelda = pt;
 
-	primero.fila = new unsigned char[this->columnas];
-	this->pt = &primero;
-
-	Celdas* ptCelda = &primero;
-
-	for (int i = 1; i < f; i++) {
-		Celdas* aux = new Celdas;
-		aux->fila = new unsigned char[this->columnas];
-		ptCelda->nextRow = aux;
-		ptCelda = aux;
+		for (int i = 1; i < f; i++) {
+			Celdas* aux = new Celdas;
+			aux->fila = new unsigned char[this->columnas];
+			aux->nextRow = 0;
+			ptCelda->nextRow = aux;
+			ptCelda = aux;
+		}
+//		ptCelda = 0; No lo ponemos a 0 porque de todas formas se va a destruir al salir de la función
 	}
-	ptCelda = 0; //Ultimo elemento de la estructura //TODO, borrarlo
 }
 
 //-------------------------
@@ -35,7 +39,7 @@ int Imagen::get_filas(){
 		aux = aux->nextRow;
 		filas++;
 	}
-	aux = 0;
+	//aux = 0; No lo ponemos a 0 porque de todas formas se va a destruir al salir de la función
 
 	return filas;
 }
@@ -65,7 +69,7 @@ bool Imagen::leer_imagen(const char file[]) {
 			aux = 0;
 			resul = true;
 		}
-		auxBuffer = 0;
+		delete[] auxBuffer;
 
 	}
 	return resul;
@@ -78,7 +82,7 @@ void Imagen::set_buffer(int i, int j, unsigned char v) {
 		aux = aux->nextRow;
 
 	aux->fila[j] = v;
-	aux = 0;
+	//aux = 0; No lo ponemos a 0 porque de todas formas se va a destruir al salir de la función
 }
 
 //-------------------------
@@ -94,13 +98,14 @@ unsigned char Imagen::get_buffer(int i, int j) const {
 //-------------------------
 
 void Imagen::destruir() {
-//	Celdas* aux = pt;
-//	while(aux){
-//		delete[] aux->fila;
-//		Celdas* aux2 = aux->nextRow;
-//		delete aux->nextRow;
-//		aux = aux2;
-//	}
+	Celdas* aux = pt;
+	while(aux){
+		delete[] aux->fila;
+		Celdas* aux2 = aux->nextRow;
+		delete aux;
+		aux = aux2;
+	}
+	pt = 0;
 }
 
 //-------------------------

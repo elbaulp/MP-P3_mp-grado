@@ -20,7 +20,7 @@ void Imagen::crear(int f, int c) {
 		columnas = c;
 		buffer 	 = new unsigned char*[filas];
 
-		for (int i = 0; i < columnas; i++)
+		for (int i = 0; i < filas; i++)
 			buffer[i] = new unsigned char[columnas];
 	}
 }
@@ -84,7 +84,7 @@ bool Imagen::escribir_imagen(const char file[]){
 			auxBuffer[i*columnas + j] = buffer[i][j]; //2d Array to 1D
 
 	if (EscribirImagenPGM(file, auxBuffer, filas, columnas)){
-		delete[] auxBuffer;
+		delete[] auxBuffer; //TODO Fuera
 		return true;
 	}
 	return false;

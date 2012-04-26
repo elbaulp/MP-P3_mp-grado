@@ -5,7 +5,7 @@ OBJ 	= obj
 DIR_LIB = lib
 LIB		= libimagen.a
 CXX 	= g++
-CPPFLAGS= -Wall -g -O3 -ansi -I$(INC) -c
+CPPFLAGS= -Wall -g -O3 -ansi -I$(INC) -c # Poner -O3 -ansi cuando deje de depuarar para optimizar
 INC_LIB = -L./$(DIR_LIB) -limagen
 IMAGENES= obj/imagen1.cpp obj/imagen2.cpp obj/imagen3.cpp obj/imagen4.cpp
 IMAGENESO= $(IMAGENES:.cpp=.o)
@@ -24,7 +24,7 @@ $(OBJ)/imagenES.o : $(SRC)/imagenES.cpp $(INC)/imagenES.h
 	$(CXX) $(CPPFLAGS) $(SRC)/imagenES.cpp -o $(OBJ)/imagenES.o
 $(OBJ)/negativo.o : $(SRC)/negativo.cpp
 	@echo Creando la $@... con $^
-	$(CXX) $(CPPFLAGS) $(SRC)/negativo.cpp $(INC_LIB) -o $(OBJ)/negativo.o
+	$(CXX) $(CPPFLAGS) $(SRC)/negativo.cpp -o $(OBJ)/negativo.o
 $(OBJ)/desplazar.o : $(SRC)/desplazar.cpp
 	@echo Creando la $@... con $^
 	$(CXX) $(CPPFLAGS) $(SRC)/desplazar.cpp -o $(OBJ)/desplazar.o
@@ -61,7 +61,7 @@ documentacion:
 .PHONY: clean
 clean :
 	@echo Limpiando archivos intermedios...
-	rm $(OBJ)/* $(SRC)/*~ $(INC)/*~ ./*~
+	rm $(DIR_LIB)/* $(OBJ)/* $(SRC)/*~ $(INC)/*~ ./*~
 
 mrproper : clean
 	-rm $(BIN)/* doc/html/*

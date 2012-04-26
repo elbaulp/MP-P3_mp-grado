@@ -18,7 +18,6 @@ private:
 
 	int columnas;
 	Celdas* pt;
-	int d;
 
 public:
 	void crear(int, int);					//Reserva recursos en memoria dinámica

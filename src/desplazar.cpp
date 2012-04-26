@@ -10,6 +10,7 @@
 #include "../include/transformar.h"
 
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -25,7 +26,7 @@ int main(int argc, char *argv[]) {
 		cout << "No se puede leer la imagen " << endl;
 		return -2;
 	}
-	desplazar(img, (int)*argv[1]);
+	desplazar(img, atoi(argv[1]));
 	if (!img.escribir_imagen(argv[3])) {
 		cout << "No se puede escribir la imagen " << endl;
 		return -3;
