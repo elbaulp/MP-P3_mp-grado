@@ -75,7 +75,7 @@ void Imagen::destruir() {
 
 //-------------------------
 
-bool Imagen::escribir_imagen(const char file[]) const {
+bool Imagen::escribir_imagen(const char file[]){
 	//Pasamos de la estructura de buffer2 a la simple
 	unsigned char* auxBuffer = new unsigned char[filas * columnas];
 

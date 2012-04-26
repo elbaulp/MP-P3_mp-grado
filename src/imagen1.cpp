@@ -62,7 +62,7 @@ bool Imagen::leer_imagen(const char file[]) {
 
 //-------------------------
 
-bool Imagen::escribir_imagen(const char file[]) const {
+bool Imagen::escribir_imagen(const char file[]){
 	if (EscribirImagenPGM(file, buffer, filas, columnas))
 		return true;
 	return false;

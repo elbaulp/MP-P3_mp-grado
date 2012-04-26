@@ -17,7 +17,7 @@ private:
 
 public:
 	void crear(int,int);
-	inline int get_filas() const{				//Devuelve el número de filas de m
+	int get_filas() const{				//Devuelve el número de filas de m
 		return filas;
 	}
 	inline int get_columnas() const{			//Devuelve el número de columnas de m
@@ -27,7 +27,7 @@ public:
 	unsigned char get_buffer(int, int) const; 	//Devuelve img(i,j)
 	void destruir();							//Libera recursos de m
 	bool leer_imagen(const char[]);				//Carga imagen en img
-	bool escribir_imagen(const char[]) const;	//Salva img en un archivo
+	bool escribir_imagen(const char[]);	//Salva img en un archivo
 };
 
 
