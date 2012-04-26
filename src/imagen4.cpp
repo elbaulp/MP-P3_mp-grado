@@ -16,6 +16,7 @@ void Imagen::crear(int f, int c) {
 
 	Celdas* ptCelda = &primero;
 
+<<<<<<< HEAD
 	for (int i = 1; i < f; i++) {
 		Celdas* aux = new Celdas;
 		aux->fila = new unsigned char[this->columnas];
@@ -23,6 +24,15 @@ void Imagen::crear(int f, int c) {
 		ptCelda = aux;
 	}
 	ptCelda = 0; //Ultimo elemento de la estructura //TODO, borrarlo
+=======
+		for (int i = 1; i < f; i++) {
+			Celdas* aux = new Celdas;
+			aux->fila = new unsigned char[columnas];
+			ptCelda->nextRow = aux;
+			ptCelda = aux;
+		}
+		delete ptCelda; //Ultimo elemento de la estructura //TODO, borrarlo
+>>>>>>> 54891c88394019e9cfa42d5f21b57ca90f01e54e
 }
 
 //-------------------------
@@ -35,7 +45,7 @@ int Imagen::get_filas(){
 		aux = aux->nextRow;
 		filas++;
 	}
-	aux = 0;
+	delete aux;
 
 	return filas;
 }
@@ -72,11 +82,18 @@ bool Imagen::leer_imagen(const char file[]) {
 }
 
 void Imagen::set_buffer(int i, int j, unsigned char v) {
+<<<<<<< HEAD
 	Celdas* aux = this->pt;
 
 	while (i--)
 		aux = aux->nextRow;
 
+=======
+	Celdas* aux = pt;
+
+	while (i--)
+		aux = aux->nextRow;
+>>>>>>> 54891c88394019e9cfa42d5f21b57ca90f01e54e
 	aux->fila[j] = v;
 	aux = 0;
 }
@@ -84,11 +101,20 @@ void Imagen::set_buffer(int i, int j, unsigned char v) {
 //-------------------------
 
 unsigned char Imagen::get_buffer(int i, int j) const {
+<<<<<<< HEAD
 	Celdas* aux = this->pt;
 
 	while (i-- && aux)
 		aux = aux->nextRow;
 	return aux->fila[j];
+=======
+	Celdas* aux = pt;
+
+	while (i--)
+		aux = aux->nextRow;
+	return aux->fila[j];
+	aux = 0;
+>>>>>>> 54891c88394019e9cfa42d5f21b57ca90f01e54e
 }
 
 //-------------------------

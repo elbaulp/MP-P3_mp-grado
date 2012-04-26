@@ -20,7 +20,11 @@ private:
 	Celdas* pt;
 
 public:
+<<<<<<< HEAD
 	void crear(int, int);					//Reserva recursos en memoria dinámica
+=======
+	void crear(int, int);						//Reserva recursos en memoria dinámica
+>>>>>>> 54891c88394019e9cfa42d5f21b57ca90f01e54e
 	int get_filas();
 	inline int get_columnas() const{			//Devuelve el número de columnas de m
 		return columnas;
